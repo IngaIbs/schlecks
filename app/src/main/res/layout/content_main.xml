@@ -24,7 +24,7 @@
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/crazy"
+        android:text="@string/funky"
         android:id="@+id/checkBox"
         android:layout_marginTop="51dp"
         android:checked="false"
