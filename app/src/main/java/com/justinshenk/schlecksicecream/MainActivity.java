@@ -1,5 +1,6 @@
 package com.justinshenk.schlecksicecream;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,7 +10,10 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
+    public final static String FLAVOR = "com.example.myfirstapp.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
     }
 
     @Override
@@ -49,4 +54,19 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public String randomFlavor(){
+        String[] flavors= getResources().getStringArray(R.array.flavors);
+        String randomFlavor = flavors[new Random().nextInt(flavors.length)];
+
+        return randomFlavor;
+    }
+
+    public void sendMessage(View view) {
+        Intent intent = new Intent(this, DisplayFlavorActivity.class);
+        String message = randomFlavor();
+        intent.putExtra(FLAVOR, message);
+        startActivity(intent);
+    }
+
 }
